@@ -4,4 +4,15 @@ services:
     ports:
       - 3443:3443
     environment:
-      ZTNCUI_PASSWD: password1
+      ZTNCUI_PASSWD: password
+    networks:
+      - web
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.ztncui.rule=Host(`zt.danlab.ru`)
+      - traefik.http.services.ztncui.loadBalancer.server.port=3443
+    restart: unless-stopped
+
+networks:
+  web:
+    external: true
