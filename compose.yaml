@@ -1,0 +1,7 @@
+services:
+  ztncui:
+    image: keynetworks/ztncui:1.2.11
+    ports:
+      - 3443:3443
+    environment:
+      ZTNCUI_PASSWD: password1
