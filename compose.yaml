@@ -1,16 +1,16 @@
 services:
   ztncui:
     image: keynetworks/ztncui:1.2.11
-    ports:
-      - 3443:3443
     environment:
+      HTTP_ALL_INTERFACES: 'yes'
       ZTNCUI_PASSWD: password
     networks:
       - web
     labels:
       - traefik.enable=true
       - traefik.http.routers.ztncui.rule=Host(`zt.danlab.ru`)
-      - traefik.http.services.ztncui.loadBalancer.server.port=3443
+      - traefik.http.services.ztncui.entryPoints=websecure
+      - traefik.http.services.ztncui.loadBalancer.server.port=3000
     restart: unless-stopped
 
 networks:
