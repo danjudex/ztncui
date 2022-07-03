@@ -8,7 +8,7 @@ services:
       - web
     labels:
       - traefik.enable=true
-      - traefik.http.routers.ztncui.rule=Host(`zt.danlab.ru`)
+      - traefik.http.routers.ztncui.rule=Host(`${APP_HOST}`)
       - traefik.http.services.ztncui.entryPoints=websecure
       - traefik.http.services.ztncui.loadBalancer.server.port=3000
     restart: unless-stopped
